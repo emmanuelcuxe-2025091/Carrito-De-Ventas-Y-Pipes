@@ -1,1 +1,7 @@
-<p>listado-productos works!</p>
+<h2>Productos disponibles</h2>
+<ul>
+  <li *ngFor="let producto of productosDisponibles">
+    {{ producto.nombre }} - {{ producto.precio | currency:'GTQ' }}
+    <button (click)="agregarAlCarrito(producto)">Agregar</button>
+  </li>
+</ul>
