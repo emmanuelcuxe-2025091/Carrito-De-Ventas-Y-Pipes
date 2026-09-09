@@ -1,9 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CarritoService } from '../../services/carrito.service';
+import { ItemCarrito } from '../../models/item-carrito.model';
 
 @Component({
-  imports: [],
   selector: 'app-resumen-carrito',
-  styleUrl: './resumen-carrito.css',
-  templateUrl: './resumen-carrito.html',
+  templateUrl: './resumen-carrito.component.html'
 })
-export class ResumenCarrito {}
+export class ResumenCarritoComponent implements OnInit {
+  carrito$!: Observable<ItemCarrito[]>;
+
+  constructor(private carritoService: CarritoService) {}
+
+  ngOnInit(): void {
+    this.carrito$ = this.carritoService.carrito$;
+  }
+}
